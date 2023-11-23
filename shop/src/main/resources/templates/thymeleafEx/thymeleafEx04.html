@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>상품 리스트 출력 예제</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>순번</td>
+                <td>상품명</td>
+                <td>상품 설명</td>
+                <td>가격</td>
+                <td>상품 등록일</td>
+            </tr>
+        </thead>
+
+        <tbody>
+           <!-- if와 unless의 조건은 반드시 동일해야 함-->
+            <tr th:each="itemDTO: ${itemDTOList}">
+                <td th:switch="${itemDTOStat.count}">
+                    <span th:case="1">일</span>
+                    <span th:case="2">이</span>
+                </td>
+<!--                <td th:if="${itemDTOStat.odd}" th:text="홀수"></td>-->
+<!--                <td th:unless="${itemDTOStat.odd}" th:text="짝수"></td>-->
+                <td th:text="${itemDTO.itemName}"></td>
+                <td th:text="${itemDTO.itemDetail}"></td>
+                <td th:text="${itemDTO.price}"></td>
+                <td th:text="${itemDTO.regTime}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
